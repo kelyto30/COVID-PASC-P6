@@ -1,0 +1,8 @@
+data/raw/
+*.tar
+*.gz
+*.rds
+*.pdf
+.DS_Store
+.Rhistory
+.RData
