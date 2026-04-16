@@ -1,0 +1,4 @@
+"sample","age","sex","batch","mean_dist","decision","reason"
+"COVID11",80,"F","Batch1",164.46,"RETAIN - biological signal","Age extreme (80F)"
+"COVID14",38,"M","Batch2",172.12,"RETAIN - biological signal","Youngest COVID case (38M)"
+"COVID15",45,"M","Batch2",184.64,"RETAIN - biological signal","Young COVID case (45M)"

@@ -1,0 +1,4 @@
+"term","R2","p_value","significant"
+"batch",0.0198,0.072,FALSE
+"diagnosis",0.1139,0.001,TRUE
+"residual",0.8663,NA,NA
