@@ -1,0 +1,2 @@
+"id.exposure","id.outcome","outcome","exposure","method","nsnp","b","se","pval","lo_ci","up_ci","or","or_lci95","or_uci95"
+"ebi-a-GCST90085801","ebi-a-GCST90027158","Alzheimer's disease || id:ebi-a-GCST90027158","IL 6r plasma levels conditional to rs12126142 || id:ebi-a-GCST90085801","Wald ratio",1,0.0329404697892294,0.0789602437594764,0.676548278494921,-0.121821607979344,0.187702547557803,1.0334890135912,0.885306285993856,1.20647459315693

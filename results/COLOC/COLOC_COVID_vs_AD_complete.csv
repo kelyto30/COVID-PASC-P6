@@ -1,0 +1,7 @@
+"locus","chr","center_pos","n_snps","PP.H0","PP.H1","PP.H2","PP.H3","PP.H4","colocalized","interpretation"
+"rs2660","12",113357442,2153,0,0.02112,0.00014,0.97864,1e-04,FALSE,"Distinct causal variants"
+"rs505922","9",136149229,3487,0.00095,0.90676,9e-05,0.08568,0.00652,FALSE,"COVID signal only"
+"rs622568","7",54647894,4355,8e-04,0.00019,0.76935,0.18007,0.0496,FALSE,"Inconclusive"
+"rs2109069","19",4719443,3185,0,0.9413,0,0.05353,0.00517,FALSE,"COVID signal only"
+"rs13050728","21",34615210,2448,0,0.0502,0,0.08226,0.86755,TRUE,"Shared causal variant"
+"rs35081325","3",45889921,2876,0,0.83545,0,0.15794,0.00662,FALSE,"COVID signal only"
