@@ -1,0 +1,1987 @@
+install.packages("Rcmdr")
+library(Rcmdr)
+binom.test(66, 100, 0.5, alternative = "two.sided")
+library(Rcmdr)
+dat <- read.csv("/Users/kelechielechi/Documents/CSAT 5095/WEEK 3/respiration.csv")
+xbar <- mean(dat$respirations)
+print(xbar)
+sd_value <- sd(dat$respirations)
+print(sd_value)
+confidence_level <- 0.95
+tval <- qt((1 + confidence_level) / 2, df)
+upper_bound <- xbar + margin_of_error
+margin_of_error <- tval * standard_error
+tval <- qt((1 + 0.975) / 2, 7)
+xbar <- mean(dat$respirations)
+sd_value <- sd(dat$respirations)
+n <- length(dat$respirations)
+standard_error <- sd_value / sqrt(n)
+margin_of_error <- tval * standard_error
+upper_bound <- xbar + margin_of_error
+lower_bound <- xbar - margin_of_error
+print(upper_bound)
+print(lower_bound)
+mort <- c(10, 15, 6, 19)
+print(mort)
+mat <- matrix(mort, ncol = 2)
+print(mat)
+fisher_result <- fisher.test(mat)
+print(fisher_result$p.value)
+setwd("/Users/kelechielechi/Documents/CSAT 5095/WEEK 3/respiration.csv")
+dat <- read.csv("ards.csv")
+dat <- read.csv("/Users/kelechielechi/Documents/CSAT 5095/WEEK 3/respiration.csv")
+xbar <- mean(dat$SurvivalTime)
+xbar <- mean(dat$respirations)
+print(xbar)
+setwd("/Users/kelechielechi/Documents/CSAT 5095/WEEK 3/ards.csv")
+library(Rcmdr)
+stewd("/Users/kelechielechi/Documents/CSAT 5095/WEEK 3/ards.csv")
+setwd("/Users/kelechielechi/Documents/CSAT 5095/WEEK 3/ards.csv")
+library(Rcmdr)
+setwd("/Users/kelechielechi/Documents/CSAT 5095/WEEK 3/ards.csv")
+dat <- read.csv("ards.csv")
+file_path <- "/Users/kelechielechi/Documents/CSAT 5095/WEEK 3/ards.csv"
+setwd(file_path)
+dat <- read.csv("ards.csv")
+xbar <- mean(dat$SurvivalTime)
+setwd("/Users/kelechielechi/Documents/CSAT 5095/WEEK 3/ards.csv")
+source("/Users/kelechielechi/Documents/CSAT 5095/WEEK 3/ards.csv")
+setwd("/Users/kelechielechi/Documents/CSAT 5095/WEEK 3/ards.csv")
+source("/Users/kelechielechi/Documents/CSAT 5095/WEEK 3/ards.csv")
+setwd("/Users/kelechielechi/Documents/CSAT 5095/WEEK 3/ards.csv")
+T<-3.27
+2*T/SQRT(12)
+2*T/sqrt(12)
+# Data#
+species_a <- c(rep("positive", 7), rep("negative", 13))#
+species_c <- c(rep("positive", 4), rep("negative", 16))#
+#
+# Contingency table#
+contingency_table <- matrix(c(7, 13, 4, 16), nrow = 2, ncol = 2, #
+                           dimnames = list(c("positive", "negative"), #
+                                           c("Species A", "Species C")))#
+#
+# Chi-squared test of independence#
+chisq.test(contingency_table)
+# Data#
+species_a <- c(rep("positive", 7), rep("negative", 13))#
+species_c <- c(rep("positive", 4), rep("negative", 16))#
+#
+# Contingency table#
+contingency_table <- matrix(c(7, 13, 4, 16), nrow = 2, ncol = 2, #
+                           dimnames = list(c("positive", "negative"), #
+                                           c("Species A", "Species C")))#
+#
+# Fisher's Exact test#
+fisher.test(contingency_table)
+# Number of baboons in Species A#
+n <- 20#
+#
+# Number of baboons infected in Species A#
+infected <- 7#
+#
+# Expected infection rate based on Species C#
+expected_rate <- 0.20#
+#
+# Perform the binomial test#
+result <- binom.test(infected, n, p = expected_rate, alternative = "two.sided")#
+#
+# Print the result#
+print(result)
+# Exact binomial test (Exact test of goodness of fit)#
+binom.test(x = 7, n = 20, p = 0.2, alternative = "two.sided")# Exact binomial test (Exact test of goodness of fit)#
+binom.test(x = 7, n = 20, p = 0.2, alternative = "two.sided")
+# Data#
+species_a_positive <- 7#
+species_a_total <- 20#
+species_c_rate <- 0.20 # 20% infection rate#
+#
+# Exact test of goodness of fit#
+binom.test(species_a_positive, species_a_total, p = species_c_rate)
+p_a <- 7 / 20
+p_c <- 0.20
+library(effsize)#
+cohen.d(p_a, p_c, paired = FALSE, hedges.correction = TRUE)
+$estimate#
+[1] 0.3535534#
+#
+$conf.int#
+[1] -0.1847376  0.8918444#
+#
+$magnitude#
+[1] "small"#
+#
+$sd#
+[1] 0.2236068#
+#
+$conf.level#
+[1] 0.95
+install.packages("pwr")#
+library(pwr)
+ES.h(x1 = 7, n1 = 20, x2 = 4, n2 = 20)
+# Install and load the effsize package if you haven't already#
+# install.packages("effsize")#
+library(effsize)#
+#
+# Number of baboons in Species A#
+n <- 20#
+#
+# Number of baboons infected in Species A#
+infected <- 7#
+#
+# Expected infection rate based on Species C#
+expected_rate <- 0.20#
+#
+# Calculate the observed proportion of infected baboons in Species A#
+observed_rate <- infected / n#
+#
+# Calculate Cohen's h effect size#
+effect_size <- ES.h(observed_rate, expected_rate)#
+#
+# Print the effect size#
+print(effect_size)
+# Create a matrix of observed frequencies#
+observed <- matrix(c(182, 218, 227, 173, 203, 197), nrow = 3, byrow = TRUE)#
+#
+# Perform the chi-squared test of independence#
+result <- chisq.test(observed)#
+#
+# Print the result#
+print(result)
+# Install and load the pwr package if you haven't already#
+# install.packages("pwr")#
+library(pwr)#
+#
+# Number of baboons in Species A#
+n <- 20#
+#
+# Number of baboons infected in Species A#
+infected <- 7#
+#
+# Expected infection rate based on Species C#
+expected_rate <- 0.20#
+#
+# Calculate the observed proportion of infected baboons in Species A#
+observed_rate <- infected / n#
+#
+# Calculate Cohen's h effect size#
+effect_size_h <- ES.h(p1 = observed_rate, p2 = expected_rate)#
+#
+# Print the effect size#
+print(effect_size_h)
+# Install and load the pwr package if you haven't already#
+# install.packages("pwr")#
+library(pwr)#
+#
+# Set the parameters for the power analysis#
+effect_size <- effect_size_h  # Use the Cohen's h effect size calculated previously#
+power <- 0.80  # Desired power level#
+alpha <- 0.05  # Significance level (typically 0.05)#
+#
+# Conduct the power analysis to calculate sample size#
+sample_size <- pwr.p.test(h = effect_size, sig.level = alpha, power = power)#
+#
+# Print the required sample size#
+print(sample_size)
+# Install and load the pwr package if you haven't already#
+# install.packages("pwr")#
+library(pwr)#
+#
+# Set the parameters for the power analysis#
+effect_size <- 0.3388085  # Cohen's h effect size from the output#
+power <- 0.80  # Desired power level#
+alpha <- 0.05  # Significance level (typically 0.05)#
+#
+# Conduct the power analysis to calculate sample size#
+sample_size <- pwr.p.test(h = effect_size, sig.level = alpha, power = power)#
+#
+# Print the required sample size#
+print(sample_size)
+# Number of baboons in Species A#
+n <- 20#
+#
+# Number of baboons infected in Species A#
+infected <- 7#
+#
+# Expected infection rate based on Species C#
+expected_rate <- 0.20#
+#
+# Perform the binomial test#
+result <- binom.test(infected, n, p = expected_rate, alternative = "two.sided")#
+#
+# Print the result#
+print(result)
+# Install and load the pwr package if you haven't already#
+# install.packages("pwr")#
+library(pwr)#
+#
+# Number of baboons in Species A#
+n <- 20#
+#
+# Number of baboons infected in Species A#
+infected <- 7#
+#
+# Expected infection rate based on Species C#
+expected_rate <- 0.20#
+#
+# Calculate the observed proportion of infected baboons in Species A#
+observed_rate <- infected / n#
+#
+# Calculate Cohen's h effect size#
+effect_size_h <- ES.h(p1 = observed_rate, p2 = expected_rate)#
+#
+# Print the effect size#
+print(effect_size_h)
+# Create a matrix of observed frequencies#
+observed <- matrix(c(182, 218, 227, 173, 203, 197), nrow = 3, byrow = TRUE)#
+#
+# Perform the chi-squared test of independence#
+result <- chisq.test(observed)#
+#
+# Print the result#
+print(result)
+# Install and load the pwr package if you haven't already#
+# install.packages("pwr")#
+library(pwr)#
+#
+# Calculate the effect size (Cohen's h)#
+effect_size_h <- ES.h(p1 = observed_rate, p2 = expected_rate)#
+#
+# Print the effect size#
+print(effect_size_h)
+# Install and load the pwr package if you haven't already#
+# install.packages("pwr")#
+library(pwr)#
+#
+# Set the parameters for the power analysis#
+effect_size <- effect_size_h  # Use the Cohen's h effect size calculated previously#
+power <- 0.80  # Desired power level#
+alpha <- 0.05  # Significance level (typically 0.05)#
+#
+# Conduct the power analysis to calculate sample size#
+sample_size <- pwr.p.test(h = effect_size, sig.level = alpha, power = power)#
+#
+# Print the required sample size#
+print(sample_size)
+library(Rcmdr)
+install.packages("RcmdrPlugin.coin'#
+. "coin")
+install.packages("RcmdrPlugin.coin","coin")
+library(Rcmdr)
+source("/Users/kelechielechi/Documents/CSAT 5095/WEEK 13/resample_class.R")#
+#
+t_test_result <- t.test(latency ~ treatment, data = ginseng, var.equal = FALSE)#
+cat("P-value:", t_test_result$p.value, "\n")
+# Load the data from the CSV file#
+ginseng_data <- read.csv("/Users/kelechielechi/Documents/CSAT 5095/WEEK 13/ginseng2.csv")#
+#
+# Conduct the t-test assuming unequal variances#
+t_test_result <- t.test(latency ~ treatment, data = ginseng_data, var.equal = FALSE)#
+#
+# Print the p-value from the t-test result#
+cat("P-value:", t_test_result$p.value, "\n")
+# Load the data from the CSV file#
+ginseng_data <- read.csv("/Users/kelechielechi/Documents/CSAT 5095/WEEK 13/ginseng2.csv")
+head(ginseng_data)
+# Conduct the t-test assuming unequal variances#
+t_test_result <- t.test(latency ~ treatment, data = ginseng_data, var.equal = FALSE)
+str(ginseng_data)
+# Conduct the t-test assuming unequal variances#
+t_test_result <- t.test(latency ~ group, data = ginseng_data, var.equal = FALSE)
+library(Rcmdr)
+binom.test(22,32,0.5)
+binom.test(7,20,0.5)
+# Set the observed number of successes (infected Baboon Species A)#
+observed_successes <- 7#
+#
+# Set the total number of trials (total Baboon Species A exposed)#
+total_trials <- 20#
+#
+# Set the hypothesized probability of success (infection rate in Baboon Species C)#
+hypothesized_prob <- 0.2#
+#
+# Perform the Exact test of goodness of fit#
+result <- binom.test(observed_successes, total_trials, p = hypothesized_prob)#
+#
+# Print the p-value#
+result$p.value
+ES.h(0.2,0.35)
+# Load the pwr package#
+library(pwr)#
+#
+# Set the proportions for Baboon Species C and Baboon Species A#
+p1 <- 0.2  # Proportion for Baboon Species C#
+p2 <- 7/20  # Proportion for Baboon Species A#
+#
+# Calculate the effect size (Cohen's h) using ES.h()#
+effect_size <- ES.h(p1, p2)#
+#
+# Print the effect size#
+effect_size
+ES.h(0.2, 0.35)
+ES.h(0.2,0.35)
+mild<-c(182,227,203)severe<-c(218,173,197)mat<-cbind(mild,severe)rownames(mat)<-	c("a","b","c")prop<-mat/sum(mat)effect<-ES.w2(prop)pwr.chisq.test(w=effect,sig.level=0.05,power=0.8,df=2)
+# Load the pwr package#
+library(pwr)#
+#
+# Set the effect size (Cohen's w)#
+effect_size <- 0.0919#
+#
+# Set the desired power#
+power <- 0.8#
+#
+# Set the significance level (alpha)#
+alpha <- 0.05#
+#
+# Set the degrees of freedom (df) for a 3x2 contingency table#
+df <- (3 - 1) * (2 - 1)#
+#
+# Calculate the required sample size using pwr.chisq.test()#
+sample_size <- pwr.chisq.test(w = effect_size, df = df, sig.level = alpha, power = power)#
+#
+# Print the required sample size#
+sample_size$N
+data <- data.frame(#
+  Animal = 1:6,#
+  Body_fat = c(20.4, 29.3, 48.9, 56.2, 30.6, 58.3),#
+  Leptin = c(0.64, 0.93, 1.26, 1.65, 0.83, 1.58)#
+)
+cor.test(data$Body_fat, data$Leptin, method = "pearson")
+# Load the pwr package#
+library(pwr)#
+#
+# Set the correlation coefficient (r) from the previous analysis#
+r <- 0.9823092#
+#
+# Set the significance level (alpha) and desired power#
+alpha <- 0.05#
+power <- 0.8#
+#
+# Calculate the required sample size#
+sample_size <- pwr.r.test(r = r, sig.level = alpha, power = power)#
+#
+# Print the required sample size#
+ceiling(sample_size$n)
+data <- data.frame(#
+  Subject_ID = 1:6,#
+  BMI = c(33.8, 21.2, 16.8, 25.1, 19.4, 23.2),#
+  Systolic_BP = c(277, 213, 152, 220, 207, 182)#
+)
+model <- lm(Systolic_BP ~ BMI, data = data)#
+summary(model)
+confint(model)
+# Create vectors for each group#
+control <- c(0.80, 1.15, 1.15, 1.30)#
+intranasal <- c(3.55, 2.75, 1.60, 3.50, 2.50)#
+intravenous <- c(2.05, 2.40, 0.85, 1.75, 2.55)#
+#
+# Calculate the mean of the control group#
+mean(control)
+control <- c(0.80, 1.15, 1.15, 1.75, 1.30)#
+intranasal <- c(3.55, 2.75, 1.60, 3.50, 2.50)#
+intravenous <- c(2.05, 2.40, 0.85, 1.75, 2.55)#
+#
+mean(control)#
+mean(intranasal)#
+mean(intravenous)
+install.packages("pwr")#
+library(pwr)
+control <- c(0.80, 1.15, 1.15, 1.75, 1.30)#
+intranasal <- c(3.55, 2.75, 1.60, 3.50, 2.50)#
+#
+mean_diff <- mean(intranasal) - mean(control)#
+pooled_sd <- sqrt(((length(control) - 1) * sd(control)^2 + (length(intranasal) - 1) * sd(intranasal)^2) / (length(control) + length(intranasal) - 2))#
+#
+cohens_d <- mean_diff / pooled_sd#
+cohens_d
+control <- c(0.80, 1.15, 1.15, 1.75, 1.30)#
+intranasal <- c(3.55, 2.75, 1.60, 3.50, 2.50)#
+intravenous <- c(2.05, 2.40, 0.85, 1.75, 2.55)#
+#
+n1 <- length(control)#
+n2 <- length(intranasal)#
+n3 <- length(intravenous)#
+#
+s1 <- sd(control)#
+s2 <- sd(intranasal)#
+s3 <- sd(intravenous)#
+#
+sp <- sqrt(((n1 - 1) * s1^2 + (n2 - 1) * s2^2 + (n3 - 1) * s3^2) / (n1 + n2 + n3 - 3))#
+sp
+control <- c(0.80, 1.15, 1.15, 1.75, 1.30)#
+intranasal <- c(3.55, 2.75, 1.60, 3.50, 2.50)#
+intravenous <- c(2.05, 2.40, 0.85, 1.75, 2.55)#
+#
+# Function to calculate Cohen's d effect size#
+cohens_d <- function(group1, group2) {#
+  mean_diff <- mean(group1) - mean(group2)#
+  pooled_sd <- sqrt(((length(group1) - 1) * sd(group1)^2 + (length(group2) - 1) * sd(group2)^2) / (length(group1) + length(group2) - 2))#
+  return(mean_diff / pooled_sd)#
+}#
+#
+# Calculate effect sizes#
+intranasal_vs_control_d <- cohens_d(intranasal, control)#
+intravenous_vs_control_d <- cohens_d(intravenous, control)#
+#
+# Print the results#
+cat("Effect size (Cohen's d) for Intranasal vs Control:", intranasal_vs_control_d, "\n")#
+cat("Effect size (Cohen's d) for Intravenous vs Control:", intravenous_vs_control_d, "\n")
+2*3.27
+6.54/sqrt(12)
+Call:#
+lm(formula = death.rate ~ hospital.no + income, data = Dataset)#
+#
+Residuals:#
+    Min      1Q  Median      3Q     Max #
+-3.4954 -0.4774 -0.0773  0.4603  1.8473 #
+#
+Coefficients:#
+              Estimate Std. Error t value Pr(>|t|)    #
+(Intercept) 13.7282915  1.1460377  11.979 2.63e-16 ***#
+hospital.no -0.0040182  0.0005661  -7.099 4.21e-09 ***#
+income      -0.2985870  0.1322365  -2.258   0.0283 *  #
+---#
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1#
+#
+Residual standard error: 0.8397 on 50 degrees of freedom#
+Multiple R-squared:  0.6558,	Adjusted R-squared:  0.6421 #
+F-statistic: 47.64 on 2 and 50 DF,  p-value: 2.627e-12
+# Create diagnostic plots#
+par(mfrow = c(2, 2))  # Create a 2x2 grid for plots#
+plot(best.model)
+install.packages("ggplot2")
+install.packages("pwr")
+install.packages("ggplot2")
+library(Rcmdr)
+R
+R version x.x.x#
+>
+> R
+# ---------- Packages ----------#
+if (!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager")#
+pkgs <- c("tximport", "readr", "dplyr", "biomaRt")#
+for (p in pkgs) {#
+  if (!requireNamespace(p, quietly = TRUE)) BiocManager::install(p, ask = FALSE, update = FALSE)#
+}#
+#
+library(tximport)#
+library(readr)#
+library(dplyr)#
+library(biomaRt)#
+#
+# ---------- 1) Point to your folder ----------#
+raw_dir <- "/Users/kelechielechi/Documents/THESIS SEARCH/LONG NON CODING COV 19/GSE188847_RAW"#
+#
+# ---------- 2) Collect ALL Salmon quant files (both naming styles) ----------#
+files <- list.files(raw_dir, pattern = "\\.gz$", full.names = TRUE)#
+#
+cat("Total .gz files found:", length(files), "\n")#
+stopifnot(length(files) == 94)#
+#
+# ---------- 3) Build sample table from filenames ----------#
+# Examples:#
+# GSM6793305_TNFA_LO_3.salmon.quant.sf.gz#
+# GSM5690975_CONTROL12.salmon.sf.txt.gz#
+#
+sample_id <- basename(files) %>%#
+  sub("\\.salmon\\.quant\\.sf\\.gz$", "", x = .) %>%#
+  sub("\\.salmon\\.sf\\.txt\\.gz$", "", x = .)#
+#
+samples <- tibble(#
+  sample_id = sample_id,#
+  gsm = sub("_.*", "", sample_id),#
+  label = sub("^GSM[0-9]+_", "", sample_id),#
+  file = files#
+)#
+#
+# Name the file vector with sample_id (tximport uses this as column names)#
+files_named <- setNames(samples$file, samples$sample_id)#
+#
+print(head(samples, 12))#
+#
+# ---------- 4) Get tx2gene mapping from Ensembl (GRCh38) ----------#
+# Your quant files use ENST IDs with versions like ENST....1#
+# tximport can ignore transcript versions, but we'll also strip for safety.#
+#
+strip_version <- function(x) sub("\\.[0-9]+$", "", x)#
+#
+mart <- useEnsembl(biomart = "ensembl", dataset = "hsapiens_gene_ensembl")#
+tx2gene <- getBM(#
+  attributes = c("ensembl_transcript_id", "ensembl_gene_id"),#
+  mart = mart#
+) %>%#
+  as_tibble() %>%#
+  transmute(#
+    tx = strip_version(ensembl_transcript_id),#
+    gene = ensembl_gene_id#
+  ) %>%#
+  distinct()#
+#
+cat("tx2gene rows:", nrow(tx2gene), "\n")#
+#
+# ---------- 5) tximport -> gene-level counts + TPM ----------#
+txi <- tximport(#
+  files_named,#
+  type = "salmon",#
+  tx2gene = tx2gene,#
+  ignoreTxVersion = TRUE#
+)#
+#
+# ---------- 6) Save outputs ----------#
+write.csv(txi$counts, file = file.path(raw_dir, "gene_counts_tximport.csv"))#
+write.csv(txi$abundance, file = file.path(raw_dir, "gene_tpm_tximport.csv"))#
+write.csv(samples, file = file.path(raw_dir, "sample_manifest_from_filenames.csv"), row.names = FALSE)#
+#
+cat("Saved in:", raw_dir, "\n",#
+    "- gene_counts_tximport.csv\n",#
+    "- gene_tpm_tximport.csv\n",#
+    "- sample_manifest_from_filenames.csv\n")
+>
+q()
+# Install BiocManager if you don't have it#
+if (!require("BiocManager", quietly = TRUE))#
+    install.packages("BiocManager")#
+#
+# Install Bioconductor packages#
+BiocManager::install(c(#
+    "tximport",           # For importing Salmon files#
+    "GenomicFeatures",    # For transcript-to-gene mapping#
+    "DESeq2",             # Differential expression#
+    "edgeR",              # Alternative DE method#
+    "limma",              # Normalization#
+    "clusterProfiler",    # Pathway enrichment#
+    "org.Hs.eg.db",       # Human gene annotations#
+    "WGCNA",              # Network analysis#
+    "biomaRt"             # For gene annotations#
+))#
+#
+# Install CRAN packages#
+install.packages(c(#
+    "tidyverse",          # Data wrangling#
+    "glmnet",             # Elastic net for age prediction#
+    "pheatmap",           # Heatmaps#
+    "ggplot2",            # Plotting#
+    "corrplot",           # Correlation plots#
+    "RColorBrewer",       # Color palettes#
+    "readr",              # Reading files#
+    "dplyr",              # Data manipulation#
+    "reshape2"            # Data reshaping#
+))
+p <- readRDS("/Users/kelechielechi/Documents/COVID_Brain_Aging_Project/data/metadata_with_paths.rds")
+head(p,10)
+p
+# 1) Create a project folder#
+dir.create("/mnt/data/brain_age_project", showWarnings = FALSE)#
+#
+# 2) Create a folder for the raw extracted files#
+dir.create("/mnt/data/brain_age_project/GSE188847_RAW", showWarnings = FALSE)
+# Step 1 — Install the missing specialized packages (run once)#
+if (!require("BiocManager")) install.packages("BiocManager")#
+BiocManager::install(c("viper", "dorothea"))#
+install.packages("remotes")#
+remotes::install_github("ellispatrick/BRETIGEA")#
+#
+# Step 2 — The pipeline scripts are already written#
+# aim1_TF_masterregulator.R  → already done for GSE188847#
+# aim2_deconvolution.R       → already done for GSE188847#
+# The replication script just needs the GSE164332 data path swapped in
+# Install GEOquery if you don't have it#
+if (!requireNamespace("BiocManager", quietly = TRUE))#
+  install.packages("BiocManager")#
+BiocManager::install("GEOquery")#
+#
+# Download the COVID-19 brain dataset#
+library(GEOquery)#
+gse <- getGEO("GSE188847", GSEMatrix = TRUE)
+library(GEOquery)#
+gse <- getGEO("GSE188847", GSEMatrix = TRUE)
+# Check the structure#
+show(gse)
+# See sample info (how many COVID vs control samples)#
+meta <- pData(gse[[1]])#
+table(meta$`disease state:ch1`)
+# See the expression data#
+expr <- exprs(gse[[1]])#
+dim(expr)        # how many genes x how many samples#
+head(rownames(expr))  # what the gene IDs look like
+# Step 1 - check your working directory#
+getwd()
+# Step 2 - check what metadata columns ARE available#
+colnames(meta)
+# Step 3 - download supplementary files (the actual counts)#
+getGEOSuppFiles("GSE188847")
+# Step 1 - untar the downloaded file#
+untar("/Users/kelechielechi/GSE188847/GSE188847_RAW.tar",#
+      exdir = "/Users/kelechielechi/GSE188847/")
+# Step 2 - see what files were extracted#
+list.files("/Users/kelechielechi/GSE188847/")
+library(tximport)#
+library(readr)#
+#
+peek <- read_tsv(#
+  "/Users/kelechielechi/Documents/GSE188847/GSM5690952_COVID1.salmon.sf.txt.gz",#
+  n_max = 5#
+)#
+print(peek)
+# Check if your tx2gene from the thesis project works here#
+tx2gene <- read.csv(#
+  "/Users/kelechielechi/Documents/covid-brain-aging-thesis/data/processed/GSE188847/tx2gene.csv"#
+)#
+head(tx2gene)#
+dim(tx2gene)
+library(tximport)#
+#
+# Build tx2gene in correct format (transcript -> gene symbol)#
+tx2gene_clean <- tx2gene %>%#
+  mutate(tx_id = gsub("\\..*", "", ensembl_transcript_id_version)) %>%#
+  dplyr::select(tx_id, gene_symbol = external_gene_name)#
+#
+head(tx2gene_clean)
+library(tidyverse)
+tx2gene_clean <- tx2gene %>%#
+  mutate(tx_id = gsub("\\..*", "", ensembl_transcript_id_version)) %>%#
+  dplyr::select(tx_id, gene_symbol = external_gene_name)#
+#
+head(tx2gene_clean)
+salmon_dir <- "/Users/kelechielechi/Documents/GSE188847"#
+#
+all_files <- list.files(#
+  salmon_dir,#
+  pattern = "\\.sf\\.gz$|\\.sf\\.txt\\.gz$",#
+  full.names = TRUE#
+)#
+#
+sample_names <- gsub(".*_(.*)\\.salmon.*", "\\1", basename(all_files))#
+names(all_files) <- sample_names#
+#
+cat("Total samples found:", length(all_files), "\n")#
+print(sample_names)
+# Fix sample names using a better extraction pattern#
+sample_names_fixed <- basename(all_files) %>%#
+  gsub("GSM[0-9]+_", "", .) %>%       # remove GSM ID#
+  gsub("\\.salmon.*", "", .) %>%       # remove .salmon extension#
+  gsub("\\.quant.*", "", .) %>%        # remove .quant extension#
+  gsub("\\.sf.*", "", .)               # remove .sf extension#
+#
+names(all_files) <- sample_names_fixed#
+print(sample_names_fixed)
+# Build metadata for all 94 samples#
+metadata_all <- data.frame(#
+  sample_id = sample_names_fixed,#
+  group = case_when(#
+    grepl("^COVID",    sample_names_fixed) ~ "COVID",#
+    grepl("^CONTROL|^CTRL", sample_names_fixed) ~ "Control",#
+    grepl("^ICUVENT",  sample_names_fixed) ~ "ICU_VENT",#
+    grepl("^O",        sample_names_fixed) ~ "Older_Adult",#
+    grepl("^Y",        sample_names_fixed) ~ "Younger_Adult",#
+    grepl("^IFNB_HI",  sample_names_fixed) ~ "IFNB_High",#
+    grepl("^IFNB_LO",  sample_names_fixed) ~ "IFNB_Low",#
+    grepl("^IFNG_HI",  sample_names_fixed) ~ "IFNG_High",#
+    grepl("^IFNG_LO",  sample_names_fixed) ~ "IFNG_Low",#
+    grepl("^TNFA_HI",  sample_names_fixed) ~ "TNFA_High",#
+    grepl("^TNFA_LO",  sample_names_fixed) ~ "TNFA_Low"#
+  ),#
+  stringsAsFactors = FALSE#
+)#
+#
+rownames(metadata_all) <- metadata_all$sample_id#
+table(metadata_all$group)
+txi <- tximport(#
+  all_files,#
+  type                = "salmon",#
+  tx2gene             = tx2gene_clean,#
+  txIn                = TRUE,#
+  txOut               = FALSE,#
+  ignoreTxVersion     = TRUE,#
+  countsFromAbundance = "lengthScaledTPM"#
+)#
+#
+cat("✅ tximport complete!\n")#
+cat("Genes:", nrow(txi$counts), "\n")#
+cat("Samples:", ncol(txi$counts), "\n")
+# Save the txi object#
+dir.create("/Users/kelechielechi/Documents/SAND_MR_Pipeline/SAND_MR_Pipeline/data", #
+           recursive = TRUE, showWarnings = FALSE)#
+#
+saveRDS(txi, "/Users/kelechielechi/Documents/SAND_MR_Pipeline/SAND_MR_Pipeline/data/txi_all94.rds")#
+saveRDS(metadata_all, "/Users/kelechielechi/Documents/SAND_MR_Pipeline/SAND_MR_Pipeline/data/metadata_all94.rds")#
+#
+cat("✅ Data saved!\n")
+# Build DESeq2 object — focus on COVID vs Control for SAND hypothesis#
+library(DESeq2)#
+#
+# Subset to COVID + Control only first#
+keep_samples <- metadata_all$group %in% c("COVID", "Control")#
+metadata_sand <- metadata_all[keep_samples, ]#
+metadata_sand$group <- factor(metadata_sand$group, levels = c("Control", "COVID"))#
+#
+dds_sand <- DESeqDataSetFromTximport(#
+  txi    = list(#
+    counts    = txi$counts[,    keep_samples],#
+    abundance = txi$abundance[, keep_samples],#
+    length    = txi$length[,    keep_samples]#
+  ),#
+  colData = metadata_sand,#
+  design  = ~ group#
+)#
+#
+# Filter low count genes#
+dds_sand <- dds_sand[rowSums(counts(dds_sand) >= 10) >= 3, ]#
+cat("Genes after filtering:", nrow(dds_sand), "\n")
+# Subset txi correctly by keeping the full object structure#
+txi_sand <- txi#
+txi_sand$counts    <- txi$counts[,    keep_samples]#
+txi_sand$abundance <- txi$abundance[, keep_samples]#
+txi_sand$length    <- txi$length[,    keep_samples]#
+#
+# Now build DESeq2 object#
+dds_sand <- DESeqDataSetFromTximport(#
+  txi     = txi_sand,#
+  colData = metadata_sand,#
+  design  = ~ group#
+)#
+#
+# Filter low count genes#
+dds_sand <- dds_sand[rowSums(counts(dds_sand) >= 10) >= 3, ]#
+cat("Genes after filtering:", nrow(dds_sand), "\n")
+# Run DESeq2#
+dds_sand$group <- relevel(dds_sand$group, ref = "Control")#
+dds_sand <- DESeq(dds_sand)#
+cat("✅ DESeq2 complete!\n")
+# Extract results#
+res <- results(dds_sand,#
+               contrast       = c("group", "COVID", "Control"),#
+               alpha          = 0.05,#
+               pAdjustMethod  = "BH")#
+#
+# Shrink fold changes#
+res_shrunk <- lfcShrink(dds_sand,#
+                        coef = "group_COVID_vs_Control",#
+                        type = "apeglm",#
+                        quiet = TRUE)#
+#
+# Quick summary#
+summary(res_shrunk)
+# Check your SAND signature genes specifically#
+sand_genes <- c("IFITM1","IFITM2","IFITM3","OAS2","MX1",#
+                "MX2","IRF1","IRF7","STAT2","ISG20","PSMB8")#
+#
+as.data.frame(res_shrunk) %>%#
+  rownames_to_column("gene") %>%#
+  filter(gene %in% sand_genes) %>%#
+  arrange(padj)
+# Save results first#
+saveRDS(dds_sand,   "/Users/kelechielechi/Documents/SAND_MR_Pipeline/SAND_MR_Pipeline/data/dds_sand.rds")#
+saveRDS(res_shrunk, "/Users/kelechielechi/Documents/SAND_MR_Pipeline/SAND_MR_Pipeline/data/res_shrunk_COVID_vs_Control.rds")#
+#
+de_df <- as.data.frame(res_shrunk) %>%#
+  rownames_to_column("gene") %>%#
+  mutate(#
+    Significant = !is.na(padj) & padj < 0.05 & abs(log2FoldChange) > 0.5,#
+    Direction   = ifelse(log2FoldChange > 0, "Up", "Down"),#
+    SAND_gene   = gene %in% sand_genes#
+  )#
+#
+write.csv(de_df,#
+  "/Users/kelechielechi/Documents/SAND_MR_Pipeline/SAND_MR_Pipeline/data/DEG_COVID_vs_Control.csv",#
+  row.names = FALSE)#
+#
+cat("✅ Results saved!\n")#
+cat("Significant DEGs (FDR<0.05, |LFC|>0.5):", sum(de_df$Significant, na.rm=TRUE), "\n")#
+cat("SAND genes significant:", sum(de_df$Significant & de_df$SAND_gene, na.rm=TRUE), "/", length(sand_genes), "\n")
+library(ggrepel)#
+#
+# Prepare plot data#
+plot_df <- de_df %>%#
+  mutate(#
+    neg_log10_p = -log10(pvalue),#
+    color_group = case_when(#
+      SAND_gene & Significant          ~ "SAND Signature (Sig)",#
+      SAND_gene & !Significant         ~ "SAND Signature (NS)",#
+      Significant & Direction == "Up"  ~ "Upregulated",#
+      Significant & Direction == "Down"~ "Downregulated",#
+      TRUE                             ~ "Not Significant"#
+    ),#
+    label = ifelse(SAND_gene, gene, NA)#
+  )#
+#
+# Plot#
+volcano <- ggplot(plot_df,#
+    aes(x = log2FoldChange, y = neg_log10_p,#
+        color = color_group)) +#
+  geom_point(size = 1.2, alpha = 0.6) +#
+  geom_point(#
+    data = filter(plot_df, SAND_gene),#
+    size = 3.5, alpha = 1#
+  ) +#
+  geom_label_repel(#
+    aes(label = label),#
+    size          = 3.5,#
+    fontface      = "bold",#
+    box.padding   = 0.5,#
+    max.overlaps  = 20,#
+    show.legend   = FALSE,#
+    segment.color = "gray40"#
+  ) +#
+  geom_vline(xintercept = c(-0.5, 0.5),#
+             linetype = "dashed", color = "gray50") +#
+  geom_hline(yintercept = -log10(0.05),#
+             linetype = "dashed", color = "gray50") +#
+  scale_color_manual(values = c(#
+    "SAND Signature (Sig)" = "#9B2226",#
+    "SAND Signature (NS)"  = "#EE9B00",#
+    "Upregulated"          = "#AE2012",#
+    "Downregulated"        = "#005F73",#
+    "Not Significant"      = "gray75"#
+  )) +#
+  labs(#
+    title    = "COVID-19 vs. Control — Post-mortem Brain",#
+    subtitle = "SAND IFN-I signature genes highlighted (de Erausquin et al., 2022)",#
+    x        = "log2 Fold Change (COVID / Control)",#
+    y        = "-log10(p-value)",#
+    color    = NULL,#
+    caption  = "9/11 SAND signature genes significantly upregulated (FDR<0.05, |LFC|>0.5)"#
+  ) +#
+  theme_classic(base_size = 13) +#
+  theme(#
+    plot.title    = element_text(face = "bold", size = 13),#
+    plot.subtitle = element_text(color = "gray40", size = 10),#
+    plot.caption  = element_text(color = "gray40", size = 9),#
+    legend.position = "bottom"#
+  )#
+#
+# Save#
+ggsave(#
+  "/Users/kelechielechi/Documents/SAND_MR_Pipeline/SAND_MR_Pipeline/data/Volcano_SAND_COVID_vs_Control.png",#
+  volcano, width = 10, height = 8, dpi = 300#
+)#
+#
+cat("✅ Volcano plot saved!\n")#
+print(volcano)
+library(pheatmap)#
+#
+# Get VST normalized counts#
+vst_sand <- assay(vst(dds_sand, blind = FALSE))#
+#
+# Extract just SAND genes#
+sand_present <- intersect(sand_genes, rownames(vst_sand))#
+sand_matrix  <- vst_sand[sand_present, ]#
+#
+# Annotation#
+ann_col <- data.frame(#
+  Group = metadata_sand$group,#
+  row.names = metadata_sand$sample_id#
+)#
+ann_colors <- list(Group = c("Control" = "#1F77B4", "COVID" = "#D62728"))#
+#
+pheatmap(#
+  sand_matrix,#
+  scale            = "row",#
+  annotation_col   = ann_col,#
+  annotation_colors= ann_colors,#
+  cluster_rows     = TRUE,#
+  cluster_cols     = TRUE,#
+  show_colnames    = FALSE,#
+  fontsize_row     = 11,#
+  color            = colorRampPalette(c("#005F73","white","#9B2226"))(100),#
+  main             = "SAND IFN-I Signature — COVID vs Control Brain\n(de Erausquin et al., 2022)",#
+  filename         = "/Users/kelechielechi/Documents/SAND_MR_Pipeline/SAND_MR_Pipeline/data/Heatmap_SAND_genes.png",#
+  width            = 10,#
+  height           = 7#
+)#
+#
+cat("✅ Heatmap saved!\n")
+pheatmap(#
+  sand_matrix,#
+  scale            = "row",#
+  annotation_col   = ann_col,#
+  annotation_colors= ann_colors,#
+  cluster_rows     = TRUE,#
+  cluster_cols     = TRUE,#
+  show_colnames    = FALSE,#
+  fontsize_row     = 11,#
+  color            = colorRampPalette(c("#005F73","white","#9B2226"))(100),#
+  main             = "SAND IFN-I Signature: COVID vs Control Brain (de Erausquin et al., 2022)",#
+  filename         = "/Users/kelechielechi/Documents/SAND_MR_Pipeline/SAND_MR_Pipeline/data/Heatmap_SAND_genes.png",#
+  width            = 10,#
+  height           = 7#
+)#
+cat("✅ Clean heatmap saved!\n")
+pkgs <- c("GEOquery","DESeq2","edgeR","sva","GSVA","escape",#
+          "HGNChelper","tidyverse","lme4","WGCNA","TwoSampleMR","coloc","igraph")#
+#
+loaded <- sapply(pkgs, requireNamespace, quietly = TRUE)#
+cat("Packages missing:\n")#
+print(names(loaded[!loaded]))#
+cat("Packages ready:\n")#
+print(names(loaded[loaded]))
+install.packages("Matrix", type = "source")
+install.packages(#
+  "https://cran.r-project.org/src/contrib/Archive/Matrix/Matrix_1.6-5.tar.gz",#
+  repos = NULL,#
+  type  = "source"#
+)
+install.packages("lme4", type = "source")
+remotes::install_github("MRCIEU/TwoSampleMR", upgrade = "never")
+pkgs <- c("GEOquery","DESeq2","edgeR","sva","GSVA","escape",#
+          "HGNChelper","tidyverse","lme4","WGCNA","TwoSampleMR","coloc","igraph")#
+#
+loaded <- sapply(pkgs, requireNamespace, quietly = TRUE)#
+cat("Packages missing:\n")#
+print(names(loaded[!loaded]))#
+cat("Packages ready:\n")#
+print(names(loaded[loaded]))
+library(GEOquery)#
+library(here)#
+#
+cat("Downloading GSE163005...\n")#
+#
+gse163005 <- getGEO("GSE163005", GSEMatrix = TRUE, destdir = here("data/raw/GEO/GSE163005"))#
+#
+cat("Download complete.\n")#
+cat("Number of objects returned:", length(gse163005), "\n")#
+cat("Dimensions of expression data:", dim(exprs(gse163005[[1]])), "\n")#
+cat("Sample metadata columns:\n")#
+print(colnames(pData(gse163005[[1]])))
+# Extract metadata from both objects#
+meta1 <- pData(gse163005[[1]])#
+meta2 <- pData(gse163005[[2]])#
+#
+cat("=== Object 1 — first few rows of key clinical columns ===\n")#
+print(meta1[, c("geo_accession",#
+                "diagnosis:ch1",#
+                "tissue:ch1",#
+                "characteristics_ch1",#
+                "characteristics_ch1.1",#
+                "characteristics_ch1.2",#
+                "characteristics_ch1.3")])#
+#
+cat("\n=== Object 2 — first few rows of key clinical columns ===\n")#
+print(meta2[, c("geo_accession",#
+                "diagnosis:ch1",#
+                "tissue:ch1",#
+                "characteristics_ch1",#
+                "characteristics_ch1.1",#
+                "characteristics_ch1.2",#
+                "characteristics_ch1.3")])
+gse188847 <- getGEO("GSE188847", GSEMatrix = TRUE, #
+                     destdir = here("data/raw/GEO/GSE163005"))#
+#
+cat("Number of objects:", length(gse188847), "\n")#
+cat("Dimensions:", dim(exprs(gse188847[[1]])), "\n")#
+cat("Metadata columns:\n")#
+print(colnames(pData(gse188847[[1]])))
+meta <- pData(gse188847[[1]])#
+#
+cat("=== Age distribution ===\n")#
+print(table(meta$`age:ch1`))#
+#
+cat("\n=== Group (COVID vs control) ===\n")#
+print(table(meta$`group:ch1`))#
+#
+cat("\n=== Tissue ===\n")#
+print(table(meta$`tissue:ch1`))#
+#
+cat("\n=== Sex ===\n")#
+print(table(meta$`Sex:ch1`))#
+#
+cat("\n=== Sample of full metadata (first 6 rows, key columns) ===\n")#
+print(meta[1:6, c("geo_accession", "age:ch1", "group:ch1", #
+                   "Sex:ch1", "tissue:ch1")])
+cat("=== Full tissue breakdown ===\n")#
+print(table(meta$`tissue:ch1`, useNA = "always"))#
+#
+cat("\n=== Group breakdown for frontal cortex samples only ===\n")#
+frontal_idx <- meta$`tissue:ch1` == "Frontal cortex of brain"#
+frontal_idx[is.na(frontal_idx)] <- FALSE#
+print(table(meta$`group:ch1`[frontal_idx]))#
+#
+cat("\n=== Age of frontal cortex samples ===\n")#
+print(sort(as.numeric(meta$`age:ch1`[frontal_idx])))#
+#
+cat("\n=== How many frontal cortex samples above/below age 59 ===\n")#
+ages_frontal <- as.numeric(meta$`age:ch1`[frontal_idx])#
+cat("Age < 60:", sum(ages_frontal < 60, na.rm=TRUE), "\n")#
+cat("Age >= 60:", sum(ages_frontal >= 60, na.rm=TRUE), "\n")
+cat("=== Characteristics of NA-tissue samples ===\n")#
+na_idx <- is.na(meta$`tissue:ch1`)#
+#
+print(meta[na_idx, c("geo_accession", #
+                      "age:ch1", #
+                      "group:ch1",#
+                      "Sex:ch1",#
+                      "characteristics_ch1",#
+                      "characteristics_ch1.1",#
+                      "characteristics_ch1.2",#
+                      "characteristics_ch1.3",#
+                      "characteristics_ch1.4")][1:15, ])
+cat("=== Source name and description for NA-tissue samples ===\n")#
+print(meta[na_idx, c("geo_accession",#
+                      "source_name_ch1",#
+                      "description",#
+                      "group:ch1")][1:20, ])
+cat("\n=== Supplementary files for NA-tissue samples ===\n")#
+print(meta[na_idx, c("geo_accession",#
+                      "supplementary_file_1",#
+                      "group:ch1")][1:20, ])
+cat("=== Source name for ALL NA-tissue samples ===\n")#
+print(table(meta$source_name_ch1[na_idx]))#
+#
+cat("\n=== Group breakdown for NA-tissue samples ===\n")#
+print(table(meta$`group:ch1`[na_idx]))#
+#
+cat("\n=== Group breakdown for original 24 tissue-labelled samples ===\n")#
+print(table(meta$`group:ch1`[frontal_idx]))#
+#
+cat("\n=== Full cross-table: tissue label vs group ===\n")#
+print(table(#
+  tissue = ifelse(frontal_idx, "Frontal cortex", "NA tissue"),#
+  group  = meta$`group:ch1`#
+))
+cat("=== Source name by group for NA-tissue samples ===\n")#
+print(table(#
+  group       = meta$`group:ch1`[na_idx],#
+  source_name = meta$source_name_ch1[na_idx]#
+))
+library(tidyverse)#
+#
+# Build clean metadata for all 73 frontal cortex samples#
+meta_clean <- meta %>%#
+  filter(source_name_ch1 == "Frontal cortex of brain") %>%#
+  select(#
+    geo_accession,#
+    age       = `age:ch1`,#
+    group     = `group:ch1`,#
+    sex       = `Sex:ch1`,#
+    source    = source_name_ch1#
+  ) %>%#
+  mutate(#
+    age           = as.numeric(age),#
+    sex_male      = as.integer(sex == "M"),#
+    age_group_60  = ifelse(age >= 60, ">=60", "<60"),#
+    age_group_60  = factor(age_group_60, levels = c("<60", ">=60")),#
+    diagnosis     = case_when(#
+      group %in% c("COVID-19", "ICU/VENT") ~ "COVID19",#
+      group == "Control"                   ~ "Control",#
+      group == "Old"                       ~ "Old_Control",#
+      group == "Young"                     ~ "Young_Control",#
+      TRUE                                 ~ NA_character_#
+    )#
+  )#
+#
+cat("=== Clean metadata summary ===\n")#
+cat("Total samples:", nrow(meta_clean), "\n\n")#
+#
+cat("Group breakdown:\n")#
+print(table(meta_clean$group))#
+#
+cat("\nDiagnosis breakdown:\n")#
+print(table(meta_clean$diagnosis))#
+#
+cat("\nAge group breakdown:\n")#
+print(table(meta_clean$age_group_60, meta_clean$diagnosis))#
+#
+cat("\nAge range by diagnosis:\n")#
+print(tapply(meta_clean$age, meta_clean$diagnosis, summary))#
+#
+# Save clean metadata#
+library(here)#
+write.csv(meta_clean, #
+          here("data/processed/GSE188847_metadata_clean.csv"),#
+          row.names = FALSE)#
+cat("\nMetadata saved.\n")
+cat("=== Checking for series-level supplementary files ===\n")#
+suppl <- getGEOSuppFiles("GSE188847", #
+                          makeDirectory = FALSE,#
+                          fetch_files   = FALSE)#
+print(suppl)
+# Check file size before downloading#
+url <- "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE188nnn/GSE188847/suppl/GSE188847_RAW.tar"#
+#
+response <- httr::HEAD(url)#
+size_bytes <- as.numeric(httr::headers(response)$`content-length`)#
+cat("File size:", round(size_bytes / 1e6, 1), "MB\n")
+cat("=== Checking existing files ===\n")#
+#
+salmon_dir <- "/Users/kelechielechi/Documents/GSE188847/"#
+tx2gene_path <- "/Users/kelechielechi/Documents/covid-brain-aging-thesis/data/processed/GSE188847/tx2gene.csv"#
+#
+cat("Salmon directory exists:", dir.exists(salmon_dir), "\n")#
+cat("tx2gene file exists:", file.exists(tx2gene_path), "\n")#
+#
+# Count salmon files#
+sf_files <- list.files(salmon_dir, pattern = "\\.gz$", full.names = TRUE)#
+cat("Number of files found:", length(sf_files), "\n")#
+cat("First few filenames:\n")#
+print(head(basename(sf_files), 6))
+library(tximport)#
+library(here)#
+#
+# ── Step 1: Load tx2gene mapping ─────────────────────────#
+tx2gene_raw <- read.csv(#
+  "/Users/kelechielechi/Documents/covid-brain-aging-thesis/data/processed/GSE188847/tx2gene.csv"#
+)#
+#
+# Keep only first two columns, clean transcript IDs#
+tx2gene_clean <- tx2gene_raw[, 1:2]#
+colnames(tx2gene_clean) <- c("tx", "gene")#
+tx2gene_clean$tx <- sub("\\.\\d+$", "", tx2gene_clean$tx)#
+#
+cat("tx2gene dimensions:", dim(tx2gene_clean), "\n")#
+cat("First few rows:\n")#
+print(head(tx2gene_clean, 4))#
+#
+# ── Step 2: Build named file list ────────────────────────#
+salmon_dir <- "/Users/kelechielechi/Documents/GSE188847/"#
+all_gz <- list.files(salmon_dir, pattern = "\\.gz$", full.names = TRUE)#
+#
+# Extract clean sample names (strip GSM prefix and .salmon suffix)#
+sample_names <- basename(all_gz) %>%#
+  sub("^GSM\\d+_", "", .) %>%#
+  sub("\\.salmon.*\\.gz$", "", .)#
+#
+names(all_gz) <- sample_names#
+#
+cat("\nTotal files:", length(all_gz), "\n")#
+cat("Sample names (first 8):\n")#
+print(head(sample_names, 8))#
+#
+# ── Step 3: Run tximport ─────────────────────────────────#
+cat("\nRunning tximport...\n")#
+txi <- tximport(#
+  all_gz,#
+  type                 = "salmon",#
+  tx2gene              = tx2gene_clean,#
+  ignoreTxVersion      = TRUE,#
+  countsFromAbundance  = "lengthScaledTPM"#
+)#
+#
+cat("tximport complete.\n")#
+cat("Count matrix dimensions:", dim(txi$counts), "\n")#
+cat("  (rows = genes, columns = samples)\n")
+library(here)#
+#
+# ── Step 1: Load clean metadata ──────────────────────────#
+meta_clean <- read.csv(here("data/processed/GSE188847_metadata_clean.csv"))#
+#
+cat("Metadata samples:", nrow(meta_clean), "\n")#
+cat("Count matrix samples:", ncol(txi$counts), "\n")#
+#
+# ── Step 2: See all column names in count matrix#
+cat("\nCount matrix column names (all 94):\n")#
+print(colnames(txi$counts))
+library(here)#
+#
+# ── Step 1: Load clean metadata ──────────────────────────#
+meta_clean <- read.csv(here("data/processed/GSE188847_metadata_clean.csv"))#
+#
+cat("Metadata samples:", nrow(meta_clean), "\n")#
+cat("Count matrix samples:", ncol(txi$counts), "\n")#
+#
+# ── Step 2: See all column names in count matrix#
+cat("\nCount matrix column names (all 94):\n")#
+print(colnames(txi$counts))
+# ── Step 1: Extract title from original GEO metadata ─────#
+geo_titles <- data.frame(#
+  geo_accession = meta$geo_accession,#
+  sample_name   = meta$title,#
+  stringsAsFactors = FALSE#
+)#
+#
+cat("GEO title mapping (first 10):\n")#
+print(head(geo_titles, 10))#
+#
+# ── Step 2: Check titles match tximport names ─────────────#
+cat("\nDo titles match tximport column names?\n")#
+cat("Matching:", sum(geo_titles$sample_name %in% colnames(txi$counts)), #
+    "of", nrow(geo_titles), "\n")
+library(DESeq2)#
+#
+# ── Step 1: Build complete sample table ───────────────────#
+sample_table <- geo_titles %>%#
+  left_join(meta_clean, by = "geo_accession") %>%#
+  filter(!is.na(diagnosis))   # keeps only frontal cortex samples#
+#
+cat("Samples after filtering to frontal cortex:", nrow(sample_table), "\n")#
+cat("\nDiagnosis breakdown:\n")#
+print(table(sample_table$diagnosis))#
+#
+cat("\nAge group breakdown:\n")#
+print(table(sample_table$age_group_60, sample_table$diagnosis))#
+#
+# ── Step 2: Filter count matrix to these 73 samples ───────#
+keep_samples  <- sample_table$sample_name#
+counts_fc     <- txi$counts[, keep_samples]#
+abundance_fc  <- txi$abundance[, keep_samples]#
+length_fc     <- txi$length[, keep_samples]#
+#
+cat("\nFiltered count matrix dimensions:", dim(counts_fc), "\n")#
+#
+# ── Step 3: Build txi subset for DESeq2 ───────────────────#
+txi_fc <- list(#
+  counts    = counts_fc,#
+  abundance = abundance_fc,#
+  length    = length_fc,#
+  countsFromAbundance = txi$countsFromAbundance#
+)#
+#
+# ── Step 4: Build DESeq2 object ───────────────────────────#
+# Ensure sample table row order matches count matrix columns#
+sample_table <- sample_table[match(colnames(txi_fc$counts), #
+                                    sample_table$sample_name), ]#
+rownames(sample_table) <- sample_table$sample_name#
+#
+dds <- DESeqDataSetFromTximport(#
+  txi      = txi_fc,#
+  colData  = sample_table,#
+  design   = ~ diagnosis#
+)#
+#
+cat("\nDESeq2 object created.\n")#
+cat("Dimensions:", dim(dds), "\n")#
+cat("Design:", as.character(design(dds)), "\n")#
+#
+# ── Step 5: Save objects ───────────────────────────────────#
+saveRDS(dds,          here("data/processed/dds_raw.rds"))#
+saveRDS(sample_table, here("data/processed/sample_table.rds"))#
+saveRDS(txi_fc,       here("data/processed/txi_fc.rds"))#
+#
+cat("\nAll objects saved to data/processed/\n")
+library(edgeR)#
+library(ggplot2)#
+library(here)#
+#
+# ── Step 1: Filter low-count genes ────────────────────────#
+cat("Genes before filtering:", nrow(dds), "\n")#
+#
+keep <- filterByExpr(counts(dds), #
+                     group = dds$diagnosis,#
+                     min.count = 10,#
+                     min.prop  = 0.2)#
+#
+dds_filtered <- dds[keep, ]#
+cat("Genes after filtering:", nrow(dds_filtered), "\n")#
+cat("Genes removed:", nrow(dds) - nrow(dds_filtered), "\n")#
+#
+# ── Step 2: Variance stabilizing transformation for QC ────#
+cat("\nRunning VST normalization...\n")#
+vst_data <- vst(dds_filtered, blind = TRUE)#
+cat("VST complete.\n")#
+#
+# ── Step 3: PCA ───────────────────────────────────────────#
+pca_data <- plotPCA(vst_data, #
+                    intgroup = c("diagnosis", "age_group_60"),#
+                    returnData = TRUE)#
+#
+percent_var <- round(100 * attr(pca_data, "percentVar"))#
+#
+p_pca <- ggplot(pca_data, #
+                aes(x = PC1, y = PC2, #
+                    color = diagnosis, #
+                    shape = age_group_60)) +#
+  geom_point(size = 3, alpha = 0.85) +#
+  scale_color_manual(values = c(#
+    "COVID19"       = "#D85A30",#
+    "Control"       = "#5F5E5A",#
+    "Old_Control"   = "#7F77DD",#
+    "Young_Control" = "#1D9E75"#
+  )) +#
+  labs(#
+    x       = paste0("PC1 (", percent_var[1], "% variance)"),#
+    y       = paste0("PC2 (", percent_var[2], "% variance)"),#
+    title   = "PCA — GSE188847 frontal cortex (73 samples)",#
+    subtitle = "Shape = age group | Color = diagnosis",#
+    color   = "Diagnosis",#
+    shape   = "Age group"#
+  ) +#
+  theme_minimal(base_size = 12) +#
+  theme(legend.position = "right")#
+#
+ggsave(here("results/qc/PCA_all_samples.pdf"), #
+       p_pca, width = 8, height = 6)#
+#
+print(p_pca)#
+#
+cat("\nPCA plot saved to results/qc/PCA_all_samples.pdf\n")#
+cat("\nPC1 vs PC2 variance explained:", percent_var[1], "%,", #
+    percent_var[2], "%\n")#
+#
+# ── Step 4: Check for outliers ────────────────────────────#
+cat("\nSample distances (to spot outliers):\n")#
+sample_dists <- dist(t(assay(vst_data)))#
+dist_matrix  <- as.matrix(sample_dists)#
+mean_dist    <- rowMeans(dist_matrix)#
+#
+cat("Samples with unusually high mean distance (potential outliers):\n")#
+threshold <- mean(mean_dist) + 2 * sd(mean_dist)#
+outliers  <- names(mean_dist[mean_dist > threshold])#
+if (length(outliers) == 0) {#
+  cat("None detected — all samples look good.\n")#
+} else {#
+  cat("Flagged:", paste(outliers, collapse = ", "), "\n")#
+}
+cat("=== Investigating flagged samples ===\n")#
+#
+flagged <- c("COVID11", "COVID14", "COVID15")#
+#
+print(sample_table[sample_table$sample_name %in% flagged,#
+                   c("sample_name", "geo_accession", #
+                     "age", "sex", "diagnosis", #
+                     "age_group_60", "group")])#
+#
+cat("\n=== Compare to rest of COVID19 group ===\n")#
+covid_samples <- sample_table[sample_table$diagnosis == "COVID19", #
+                               c("sample_name", "age", "sex", "group")]#
+print(covid_samples)#
+#
+cat("\n=== Mean distances for flagged vs others ===\n")#
+cat("Flagged sample distances:\n")#
+print(round(mean_dist[flagged], 2))#
+#
+cat("\nOverall mean distance:", round(mean(mean_dist), 2), "\n")#
+cat("Threshold used:", round(threshold, 2), "\n")
+# ── Check batch effect: original vs added samples ─────────#
+sample_table <- sample_table %>%#
+  mutate(batch = ifelse(#
+    grepl("^GSM5690", geo_accession), "Batch1", "Batch2"#
+  ))#
+#
+cat("=== Batch breakdown ===\n")#
+print(table(sample_table$batch, sample_table$diagnosis))#
+#
+cat("\n=== Flagged samples batch ===\n")#
+print(sample_table[sample_table$sample_name %in% flagged,#
+                   c("sample_name", "age", "geo_accession", "batch")])#
+#
+# PCA colored by batch to visualize batch effect#
+pca_batch <- plotPCA(vst_data,#
+                     intgroup = "batch",#
+                     returnData = TRUE)#
+#
+# Add batch to vst colData for plotting#
+vst_data$batch <- sample_table$batch[#
+  match(colnames(vst_data), sample_table$sample_name)#
+]#
+#
+pca_batch_data <- plotPCA(vst_data,#
+                           intgroup = c("batch", "diagnosis"),#
+                           returnData = TRUE)#
+#
+p_batch <- ggplot(pca_batch_data,#
+                  aes(x = PC1, y = PC2,#
+                      color = batch,#
+                      shape = diagnosis)) +#
+  geom_point(size = 3, alpha = 0.85) +#
+  scale_color_manual(values = c(#
+    "Batch1" = "#1D9E75",#
+    "Batch2" = "#D85A30"#
+  )) +#
+  labs(title = "PCA colored by sequencing batch",#
+       subtitle = "Checking for batch-driven separation") +#
+  theme_minimal(base_size = 12)#
+#
+ggsave(here("results/qc/PCA_batch_check.pdf"),#
+       p_batch, width = 8, height = 6)#
+#
+print(p_batch)#
+cat("\nBatch PCA saved.\n")
+setwd("/Users/kelechielechi/Documents/COVID PASC")#
+library(here)#
+here::i_am(".here")#
+cat("Project root is now:", here(), "\n")
+install.packages("vegan")#
+library(vegan)#
+#
+dist_matrix_obj <- dist(t(assay(vst_data)))#
+#
+batch_vec <- sample_table$batch[#
+  match(colnames(vst_data), sample_table$sample_name)#
+]#
+diagnosis_vec <- sample_table$diagnosis[#
+  match(colnames(vst_data), sample_table$sample_name)#
+]#
+#
+set.seed(42)#
+permanova_result <- adonis2(#
+  dist_matrix_obj ~ batch_vec + diagnosis_vec,#
+  permutations = 999#
+)#
+#
+cat("=== PERMANOVA: variance explained ===\n")#
+print(permanova_result)#
+#
+cat("\nBatch R2:    ", round(permanova_result$R2[1], 4), "\n")#
+cat("Diagnosis R2:", round(permanova_result$R2[2], 4), "\n")
+# Run separate models to get individual R2 values#
+set.seed(42)#
+permanova_batch <- adonis2(#
+  dist_matrix_obj ~ batch_vec,#
+  permutations = 999#
+)#
+#
+set.seed(42)#
+permanova_diagnosis <- adonis2(#
+  dist_matrix_obj ~ diagnosis_vec,#
+  permutations = 999#
+)#
+#
+cat("=== Batch alone ===\n")#
+cat("R2:", round(permanova_batch$R2[1], 4), "\n")#
+cat("p-value:", permanova_batch$`Pr(>F)`[1], "\n")#
+#
+cat("\n=== Diagnosis alone ===\n")#
+cat("R2:", round(permanova_diagnosis$R2[1], 4), "\n")#
+cat("p-value:", permanova_diagnosis$`Pr(>F)`[1], "\n")#
+#
+# Also run adonis2 with by="terms" for sequential decomposition#
+set.seed(42)#
+permanova_terms <- adonis2(#
+  dist_matrix_obj ~ batch_vec + diagnosis_vec,#
+  permutations = 999,#
+  by = "terms"#
+)#
+#
+cat("\n=== Sequential decomposition by terms ===\n")#
+print(permanova_terms)
+# Save QC results as CSV so they get committed to GitHub#
+library(here)#
+#
+# Save PERMANOVA results#
+permanova_df <- data.frame(#
+  term        = c("batch", "diagnosis", "residual"),#
+  R2          = c(0.0198, 0.1139, 0.8663),#
+  p_value     = c(0.072, 0.001, NA),#
+  significant = c(FALSE, TRUE, NA)#
+)#
+write.csv(permanova_df, #
+          here("results/qc/PERMANOVA_batch_diagnosis.csv"),#
+          row.names = FALSE)#
+#
+# Save outlier summary#
+outlier_df <- data.frame(#
+  sample      = c("COVID11", "COVID14", "COVID15"),#
+  age         = c(80, 38, 45),#
+  sex         = c("F", "M", "M"),#
+  batch       = c("Batch1", "Batch2", "Batch2"),#
+  mean_dist   = c(164.46, 172.12, 184.64),#
+  decision    = "RETAIN - biological signal",#
+  reason      = c("Age extreme (80F)", #
+                  "Youngest COVID case (38M)",#
+                  "Young COVID case (45M)")#
+)#
+write.csv(outlier_df,#
+          here("results/qc/outlier_investigation.csv"),#
+          row.names = FALSE)#
+#
+# Save QC summary#
+qc_summary <- data.frame(#
+  metric  = c("Total samples", "Genes before filter", #
+               "Genes after filter", "Batch R2", #
+               "Diagnosis R2", "Batch p-value",#
+               "Diagnosis p-value", "Batch correction needed"),#
+  value   = c("73", "39360", "19491", "0.020",#
+               "0.114", "0.072", "0.001", "No")#
+)#
+write.csv(qc_summary,#
+          here("results/qc/QC_summary.csv"),#
+          row.names = FALSE)#
+#
+cat("QC CSVs saved.\n")
+library(here)#
+#
+# ── Download SenMayo (105 genes) ──────────────────────────#
+# From Saul et al. 2022 Cell Metabolism supplementary#
+# We'll use the version deposited in the GSEA MSigDB#
+#
+senmayo_url <- "https://www.gsea-msigdb.org/gsea/msigdb/human/download_geneset.jsp?geneSetName=SAUL_SEN_MAYO&fileType=txt"#
+#
+# Direct gene list — curated from Saul et al. 2022#
+senmayo_genes <- c(#
+  "ACVR1B","ANG","ANGPT1","ANGPTL4","AREG","AXL","BEX3","BMP2",#
+  "BMP6","C3","CCL1","CCL13","CCL16","CCL2","CCL20","CCL24","CCL26",#
+  "CCL3","CCL3L1","CCL4","CCL5","CCL7","CCL8","CCND1","CD55","CD9",#
+  "CSF2","CSF2RB","CTSB","CXCL1","CXCL10","CXCL12","CXCL16","CXCL2",#
+  "CXCL3","CXCL8","EGFR","EREG","ESM1","ETS2","FAS","FGF1","FGF2",#
+  "FGF7","GDF15","GEM","GMNN","HMGA1","HMGA2","ICAM1","ICAM3","IGF1",#
+  "IGFBP1","IGFBP2","IGFBP3","IGFBP4","IGFBP5","IGFBP6","IGFBP7",#
+  "IL10","IL13","IL15","IL18","IL1A","IL1B","IL2","IL32","IL33",#
+  "IL6","IL6ST","IL7","IQGAP2","ITGA2","ITPKA","JUN","KITLG","LCP1",#
+  "MIF","MMP1","MMP10","MMP12","MMP13","MMP14","MMP2","MMP3","MMP9",#
+  "NAP1L4","NRG1","PECAM1","PGF","PIGF","PLAT","PLAU","PLAUR",#
+  "PTBP1","PTGER2","PTGES","RPS6KA5","SCAMP4","SELPLG","SERPINB4",#
+  "SERPINE1","SERPINE2","SPP1","TIMP2","TNF","TNFRSF10C","TNFRSF11B",#
+  "TNFRSF1A","TNFRSF1B","TUBGCP2","VEGFA","VEGFC","VGF","WNT16","WNT2"#
+)#
+#
+cat("SenMayo genes:", length(senmayo_genes), "\n")#
+#
+# ── Download CellAge (279 genes) ──────────────────────────#
+# From genomics.senescence.info#
+# Using curated senescence-inducing genes#
+#
+cellage_url <- "https://genomics.senescence.info/cells/cellage.zip"#
+#
+tryCatch({#
+  tmp <- tempfile(fileext = ".zip")#
+  download.file(cellage_url, tmp, mode = "wb", quiet = TRUE)#
+  cellage_raw <- read.csv(unz(tmp, "cellage.csv"), #
+                           stringsAsFactors = FALSE)#
+  cellage_genes <- unique(cellage_raw$Gene.Symbol)#
+  cellage_genes <- cellage_genes[cellage_genes != ""]#
+  cat("CellAge genes downloaded:", length(cellage_genes), "\n")#
+}, error = function(e) {#
+  cat("CellAge download failed:", e$message, "\n")#
+  cat("Will use backup list.\n")#
+  cellage_genes <<- NULL#
+})#
+#
+# ── Download GenAge (307 genes) ───────────────────────────#
+genage_url <- "https://genomics.senescence.info/genes/human_genes.zip"#
+#
+tryCatch({#
+  tmp2 <- tempfile(fileext = ".zip")#
+  download.file(genage_url, tmp2, mode = "wb", quiet = TRUE)#
+  genage_raw <- read.csv(unz(tmp2, "human_genes.csv"),#
+                          stringsAsFactors = FALSE)#
+  genage_genes <- unique(genage_raw$gene.symbol)#
+  genage_genes <- genage_genes[genage_genes != ""]#
+  cat("GenAge genes downloaded:", length(genage_genes), "\n")#
+}, error = function(e) {#
+  cat("GenAge download failed:", e$message, "\n")#
+  genage_genes <<- NULL#
+})#
+#
+# ── Save gene sets ────────────────────────────────────────#
+write.csv(data.frame(gene = senmayo_genes),#
+          here("data/raw/genesets/SenMayo_genes.csv"),#
+          row.names = FALSE)#
+#
+if (!is.null(cellage_genes)) {#
+  write.csv(data.frame(gene = cellage_genes),#
+            here("data/raw/genesets/CellAge_genes.csv"),#
+            row.names = FALSE)#
+}#
+#
+if (!is.null(genage_genes)) {#
+  write.csv(data.frame(gene = genage_genes),#
+            here("data/raw/genesets/GenAge_genes.csv"),#
+            row.names = FALSE)#
+}#
+#
+cat("\nGene sets saved to data/raw/genesets/\n")
+library(here)#
+#
+# ── Read CellAge from the zip you downloaded ──────────────#
+# First copy the zip to your genesets folder, then read it#
+#
+# Option 1: Read directly from zip#
+cellage_raw <- read.delim(#
+  unz("/Users/kelechielechi/Documents/COVID PASC/data/raw/genesets/cellAge.zip",#
+      "cellage3.tsv"),#
+  stringsAsFactors = FALSE,#
+  sep = "\t"#
+)#
+#
+cat("CellAge columns:", colnames(cellage_raw), "\n")#
+cat("CellAge rows:", nrow(cellage_raw), "\n")#
+#
+cellage_genes <- unique(cellage_raw$Gene.symbol)#
+cellage_genes <- cellage_genes[cellage_genes != "" & !is.na(cellage_genes)]#
+cat("Unique CellAge genes:", length(cellage_genes), "\n")#
+cat("First 10 genes:", paste(head(cellage_genes, 10), collapse=", "), "\n")#
+#
+# Save#
+write.csv(data.frame(gene = cellage_genes),#
+          here("data/raw/genesets/CellAge_genes.csv"),#
+          row.names = FALSE)#
+cat("CellAge saved.\n")
+# ── Fixed GenAge download ─────────────────────────────────#
+tryCatch({#
+  tmp <- tempfile(fileext = ".zip")#
+  download.file(#
+    "https://genomics.senescence.info/genes/human_genes.zip",#
+    destfile = tmp,#
+    mode     = "wb",#
+    method   = "curl"#
+  )#
+  # List files in zip#
+  cat("Files inside zip:\n")#
+  print(unzip(tmp, list = TRUE))#
+  # Try reading#
+  files_in_zip <- unzip(tmp, list = TRUE)$Name#
+  cat("\nAttempting to read:", files_in_zip[1], "\n")#
+  genage_raw <- read.csv(#
+    unz(tmp, files_in_zip[1]),#
+    stringsAsFactors = FALSE#
+  )#
+  cat("Columns:", paste(colnames(genage_raw), collapse=", "), "\n")#
+  cat("Rows:", nrow(genage_raw), "\n")#
+}, error = function(e) {#
+  cat("Error:", e$message, "\n")#
+})
+# ── Save GenAge ───────────────────────────────────────────#
+genage_genes <- unique(genage_raw$symbol)#
+genage_genes <- genage_genes[genage_genes != "" & !is.na(genage_genes)]#
+cat("Unique GenAge genes:", length(genage_genes), "\n")#
+#
+write.csv(data.frame(gene = genage_genes),#
+          here("data/raw/genesets/GenAge_genes.csv"),#
+          row.names = FALSE)#
+cat("GenAge saved.\n")#
+#
+# ── Verify all three gene sets ────────────────────────────#
+cat("\n=== Gene set summary ===\n")#
+cat("SenMayo: ", length(senmayo_genes), "genes\n")#
+cat("CellAge: ", length(cellage_genes), "genes\n")#
+cat("GenAge:  ", length(genage_genes),  "genes\n")#
+#
+# ── Check overlap with our expression data ────────────────#
+expressed_genes <- rownames(dds_filtered)#
+cat("\n=== Coverage in our dataset ===\n")#
+cat("SenMayo in dataset: ",#
+    sum(senmayo_genes %in% expressed_genes),#
+    "/", length(senmayo_genes), "\n")#
+cat("CellAge in dataset: ",#
+    sum(cellage_genes %in% expressed_genes),#
+    "/", length(cellage_genes), "\n")#
+cat("GenAge in dataset:  ",#
+    sum(genage_genes %in% expressed_genes),#
+    "/", length(genage_genes), "\n")#
+#
+# ── Check SASP canonical genes specifically ───────────────#
+sasp_core <- c("IL1B","IL6","TNF","MMP3","CXCL10",#
+               "CXCL8","CCL2","CXCL1","GDF15","SERPINE1")#
+#
+cat("\n=== Core SASP genes in dataset ===\n")#
+for (g in sasp_core) {#
+  cat(g, ":", ifelse(g %in% expressed_genes, "PRESENT", "MISSING"), "\n")#
+}
+cat("First 10 row names in expression matrix:\n")#
+print(head(rownames(dds_filtered), 10))
+library(HGNChelper)#
+#
+# ── Step 1: Build Ensembl -> Symbol mapping from tx2gene ──#
+cat("Building Ensembl to symbol mapping...\n")#
+#
+# tx2gene has transcript -> Ensembl gene ID#
+# We need Ensembl gene ID -> HGNC symbol#
+# Use biomaRt for this#
+#
+library(biomaRt)#
+#
+mart <- useMart("ensembl", dataset = "hsapiens_gene_ensembl")#
+#
+ensembl_ids <- rownames(dds_filtered)#
+cat("Querying biomaRt for", length(ensembl_ids), "Ensembl IDs...\n")#
+#
+id_map <- getBM(#
+  attributes = c("ensembl_gene_id", "hgnc_symbol"),#
+  filters    = "ensembl_gene_id",#
+  values     = ensembl_ids,#
+  mart       = mart#
+)#
+#
+cat("Mapped:", nrow(id_map), "entries\n")#
+cat("Unique Ensembl IDs mapped:", length(unique(id_map$ensembl_gene_id)), "\n")#
+cat("Unique symbols:", length(unique(id_map$hgnc_symbol)), "\n")#
+cat("Empty symbols:", sum(id_map$hgnc_symbol == ""), "\n")#
+#
+# Preview#
+cat("\nFirst 10 mappings:\n")#
+print(head(id_map, 10))
+# Install if needed#
+if (!requireNamespace("org.Hs.eg.db", quietly = TRUE))#
+  BiocManager::install("org.Hs.eg.db")#
+#
+library(org.Hs.eg.db)#
+#
+# ── Build Ensembl -> Symbol map offline ───────────────────#
+cat("Building offline Ensembl -> Symbol mapping...\n")#
+#
+ensembl_ids <- rownames(dds_filtered)#
+#
+# Query org.Hs.eg.db#
+id_map <- AnnotationDbi::select(#
+  org.Hs.eg.db,#
+  keys    = ensembl_ids,#
+  columns = c("ENSEMBL", "SYMBOL"),#
+  keytype = "ENSEMBL"#
+)#
+#
+cat("Total mappings returned:", nrow(id_map), "\n")#
+cat("Unique Ensembl IDs mapped:", #
+    length(unique(id_map$ENSEMBL)), "\n")#
+cat("Unique symbols:", #
+    length(unique(id_map$SYMBOL[id_map$SYMBOL != ""])), "\n")#
+cat("Unmapped (NA symbol):", #
+    sum(is.na(id_map$SYMBOL)), "\n")#
+#
+cat("\nFirst 10 mappings:\n")#
+print(head(id_map, 10))#
+#
+# Check our key SASP genes#
+cat("\n=== Core SASP genes in mapping ===\n")#
+sasp_core <- c("IL1B","IL6","TNF","MMP3","CXCL10",#
+               "CXCL8","CCL2","CXCL1","GDF15","SERPINE1")#
+print(id_map[id_map$SYMBOL %in% sasp_core, ])
+# ── Clean the mapping: one symbol per Ensembl ID ──────────#
+# Remove NAs, handle 1:many by keeping first symbol per ID#
+id_map_clean <- id_map %>%#
+  filter(!is.na(SYMBOL), SYMBOL != "") %>%#
+  dplyr::group_by(ENSEMBL) %>%#
+  dplyr::slice(1) %>%          # keep first symbol if multiple#
+  ungroup()#
+#
+cat("Clean mapping entries:", nrow(id_map_clean), "\n")#
+#
+# ── Rename dds_filtered rows to gene symbols ───────────────#
+# Match Ensembl IDs in dds to our mapping#
+matched_idx <- match(rownames(dds_filtered), id_map_clean$ENSEMBL)#
+has_symbol  <- !is.na(matched_idx)#
+#
+cat("Genes with symbol:", sum(has_symbol), "\n")#
+cat("Genes without symbol (kept as Ensembl):", sum(!has_symbol), "\n")#
+#
+# Create new row names#
+new_names <- rownames(dds_filtered)#
+new_names[has_symbol] <- id_map_clean$SYMBOL[matched_idx[has_symbol]]#
+#
+# Check for duplicates before assigning#
+cat("Duplicate symbols:", sum(duplicated(new_names)), "\n")#
+#
+# Make unique (add .1 .2 suffix to duplicates)#
+new_names_unique <- make.unique(new_names, sep = ".")#
+#
+# Apply to dds#
+dds_symbol <- dds_filtered#
+rownames(dds_symbol) <- new_names_unique#
+#
+# Also update VST object#
+rownames(vst_data) <- new_names_unique#
+#
+cat("\nFirst 10 row names after conversion:\n")#
+print(head(rownames(dds_symbol), 10))#
+#
+# ── Re-check coverage ─────────────────────────────────────#
+expressed_symbols <- rownames(dds_symbol)#
+#
+cat("\n=== Coverage AFTER symbol conversion ===\n")#
+cat("SenMayo in dataset: ",#
+    sum(senmayo_genes %in% expressed_symbols),#
+    "/", length(senmayo_genes), "\n")#
+cat("CellAge in dataset: ",#
+    sum(cellage_genes %in% expressed_symbols),#
+    "/", length(cellage_genes), "\n")#
+cat("GenAge in dataset:  ",#
+    sum(genage_genes %in% expressed_symbols),#
+    "/", length(genage_genes), "\n")#
+#
+cat("\n=== Core SASP genes after conversion ===\n")#
+for (g in sasp_core) {#
+  cat(g, ":", ifelse(g %in% expressed_symbols,#
+                      "PRESENT", "MISSING"), "\n")#
+}#
+#
+# Save updated objects#
+saveRDS(dds_symbol, here("data/processed/dds_symbol.rds"))#
+saveRDS(id_map_clean, here("data/processed/ensembl_to_symbol.rds"))#
+cat("\nObjects saved.\n")
+library(GSVA)#
+#
+# ── Build gene set list ───────────────────────────────────#
+gene_sets <- list(#
+  SenMayo = senmayo_genes[senmayo_genes %in% expressed_symbols],#
+  CellAge = cellage_genes[cellage_genes %in% expressed_symbols],#
+  GenAge  = genage_genes[genage_genes  %in% expressed_symbols]#
+)#
+#
+cat("=== Gene sets for ssGSEA ===\n")#
+cat("SenMayo:", length(gene_sets$SenMayo), "genes\n")#
+cat("CellAge:", length(gene_sets$CellAge), "genes\n")#
+cat("GenAge: ", length(gene_sets$GenAge),  "genes\n")#
+#
+# ── Extract log2-CPM matrix from VST ─────────────────────#
+expr_mat <- assay(vst_data)#
+cat("\nExpression matrix:", dim(expr_mat), "\n")#
+#
+# ── Run ssGSEA ────────────────────────────────────────────#
+cat("\nRunning ssGSEA (this takes 2-5 minutes)...\n")#
+#
+gsva_param <- gsvaParam(#
+  exprData = expr_mat,#
+  geneSets = gene_sets,#
+  kcdf     = "Gaussian",    # for VST/log-transformed data#
+  minSize  = 10,#
+  maxSize  = 1000#
+)#
+#
+set.seed(42)#
+sen_scores <- gsva(gsva_param, verbose = TRUE)#
+#
+cat("\nssGSEA complete.\n")#
+cat("Score matrix dimensions:", dim(sen_scores), "\n")#
+cat("Rows (signatures):", rownames(sen_scores), "\n")#
+cat("Columns (samples):", ncol(sen_scores), "\n")#
+#
+# ── Preview scores ────────────────────────────────────────#
+cat("\nRaw score ranges:\n")#
+for (sig in rownames(sen_scores)) {#
+  cat(sig, ": min=", round(min(sen_scores[sig,]), 3),#
+      " max=", round(max(sen_scores[sig,]), 3),#
+      " mean=", round(mean(sen_scores[sig,]), 3), "\n")#
+}
+library(ggplot2)#
+library(tidyverse)#
+library(here)#
+#
+# ── Build scored dataset ───────────────────────────────────#
+scores_df <- as.data.frame(t(sen_scores)) %>%#
+  rownames_to_column("sample_name") %>%#
+  left_join(sample_table, by = "sample_name")#
+#
+cat("Scored samples:", nrow(scores_df), "\n")#
+#
+# ── Z-score normalize ──────────────────────────────────────#
+scores_df <- scores_df %>%#
+  mutate(#
+    SenMayo_z = scale(SenMayo)[,1],#
+    CellAge_z = scale(CellAge)[,1],#
+    GenAge_z  = scale(GenAge)[,1]#
+  )#
+#
+# ── Summary by diagnosis ───────────────────────────────────#
+cat("\n=== Mean senescence scores by diagnosis ===\n")#
+scores_df %>%#
+  group_by(diagnosis) %>%#
+  summarise(#
+    n         = n(),#
+    SenMayo_z = round(mean(SenMayo_z), 3),#
+    CellAge_z = round(mean(CellAge_z), 3),#
+    GenAge_z  = round(mean(GenAge_z),  3),#
+    mean_age  = round(mean(age), 1)#
+  ) %>% print()#
+#
+# ── COVID19 by age group ───────────────────────────────────#
+cat("\n=== COVID19 only: by age group ===\n")#
+scores_df %>%#
+  filter(diagnosis == "COVID19") %>%#
+  group_by(age_group_60) %>%#
+  summarise(#
+    n         = n(),#
+    SenMayo_z = round(mean(SenMayo_z), 3),#
+    CellAge_z = round(mean(CellAge_z), 3),#
+    GenAge_z  = round(mean(GenAge_z),  3),#
+    mean_age  = round(mean(age), 1)#
+  ) %>% print()#
+#
+# ── Violin plot ────────────────────────────────────────────#
+scores_long <- scores_df %>%#
+  pivot_longer(#
+    cols      = c(SenMayo_z, CellAge_z, GenAge_z),#
+    names_to  = "signature",#
+    values_to = "score"#
+  ) %>%#
+  mutate(#
+    signature = gsub("_z", "", signature),#
+    diagnosis = factor(diagnosis,#
+                       levels = c("Young_Control", "Control",#
+                                  "COVID19", "Old_Control"))#
+  )#
+#
+p_violin <- ggplot(scores_long,#
+                   aes(x = diagnosis, y = score,#
+                       fill = diagnosis)) +#
+  geom_violin(alpha = 0.7, trim = TRUE) +#
+  geom_jitter(width = 0.15, size = 1.5,#
+              alpha = 0.6, color = "black") +#
+  geom_boxplot(width = 0.12, fill = "white",#
+               alpha = 0.8, outlier.shape = NA) +#
+  facet_wrap(~ signature, ncol = 3) +#
+  scale_fill_manual(values = c(#
+    "Young_Control" = "#1D9E75",#
+    "Control"       = "#888780",#
+    "COVID19"       = "#D85A30",#
+    "Old_Control"   = "#7F77DD"#
+  )) +#
+  labs(#
+    x        = NULL,#
+    y        = "Senescence score (z-normalized)",#
+    title    = "Brain senescence burden by diagnosis",#
+    subtitle = "GSE188847 frontal cortex (n=73)"#
+  ) +#
+  theme_minimal(base_size = 11) +#
+  theme(#
+    legend.position = "none",#
+    axis.text.x     = element_text(angle = 30, hjust = 1),#
+    strip.text      = element_text(face = "bold")#
+  )#
+#
+ggsave(here("results/figures/Fig1_senescence_by_diagnosis.pdf"),#
+       p_violin, width = 10, height = 5)#
+print(p_violin)#
+#
+write.csv(scores_df,#
+          here("results/tables/senescence_scores.csv"),#
+          row.names = FALSE)#
+#
+cat("\nFigure and scores saved.\n")
+# ── Save Fig1 as PNG ───────────────────────────────────────#
+ggsave(#
+  here("results/figures/Fig1_senescence_by_diagnosis.png"),#
+  p_violin,#
+  width  = 10,#
+  height = 5,#
+  dpi    = 300,#
+  bg     = "white"#
+)#
+#
+cat("PNG saved to:\n")#
+cat(here("results/figures/Fig1_senescence_by_diagnosis.png"), "\n")
+library(lme4)#
+library(lmerTest)#
+#
+# ── LME model for each signature ──────────────────────────#
+# Pre-specified model (SAP): #
+# SenES ~ age_group_60 * diagnosis + sex_male + (1|batch)#
+#
+# First set reference levels#
+scores_df$diagnosis   <- factor(scores_df$diagnosis,#
+                                 levels = c("Control", "COVID19",#
+                                            "Old_Control",#
+                                            "Young_Control"))#
+scores_df$age_group_60 <- factor(scores_df$age_group_60,#
+                                  levels = c("<60", ">=60"))#
+#
+results_list <- list()#
+#
+for (sig in c("SenMayo_z", "CellAge_z", "GenAge_z")) {#
+  cat(sprintf("\n=== LME model: %s ===\n", sig))#
+  formula <- as.formula(#
+    paste0(sig, " ~ age_group_60 * diagnosis + sex_male + (1|batch)")#
+  )#
+  fit <- lmer(formula, data = scores_df, REML = FALSE)#
+  fit_sum <- summary(fit)#
+  coef_df <- as.data.frame(coef(fit_sum)) %>%#
+    rownames_to_column("term") %>%#
+    mutate(#
+      signature = sig,#
+      p_adj     = p.adjust(`Pr(>|t|)`, method = "BH")#
+    )#
+  results_list[[sig]] <- coef_df#
+  # Print key terms#
+  key_terms <- coef_df %>%#
+    filter(grepl("COVID19|age_group", term))#
+  print(key_terms %>% #
+          select(term, Estimate, `Std. Error`, #
+                 `t value`, `Pr(>|t|)`, p_adj) %>%#
+          mutate(across(where(is.numeric), ~round(., 4))))#
+}#
+#
+# Combine all results#
+all_results <- bind_rows(results_list)#
+#
+write.csv(all_results,#
+          here("results/tables/LME_senescence_results.csv"),#
+          row.names = FALSE)#
+#
+cat("\nLME results saved.\n")
