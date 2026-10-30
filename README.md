@@ -1,6 +1,6 @@
 # COVID PASC — P6 SASP Senescence Project
 
-**de Erausquin Lab | UTHSCSA Glenn Biggs Institute**
+**KELECHI ELECHI, Gabriel de Erausquin Lab | UTHSCSA Glenn Biggs Institute**
 
 Bioinformatics analysis of SARS-CoV-2-triggered brain cellular senescence
 and age-dependent cognitive impairment in PASC.
